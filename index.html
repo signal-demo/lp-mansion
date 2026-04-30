@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280">
+  <title>都心一等地のマンション投資 | 無料相談受付中</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
+  <style>
+    :root {
+      --color-primary: #000e3d;
+      --color-accent: #c9a84c;
+      --color-accent-light: #e8d08a;
+      --color-accent-dark: #9e7a2a;
+      --gradient-main: linear-gradient(135deg, #000e3d, #001a7a);
+      --gradient-gold: linear-gradient(135deg, #c9a84c, #e8d08a);
+      --color-bg: #f9f6ef;
+      --color-bg-alt: #ffffff;
+      --color-bg-dark: #000e3d;
+      --color-text: #1a1a2e;
+      --color-text-light: #5a6080;
+      --color-text-white: #f9f6ef;
+      --font-serif: 'Shippori Mincho', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg-alt);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    /* =====================
+       HERO
+    ===================== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      background: #000308;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 160px 0 200px;
+    }
+
+    #hero-cityscape {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    #hero-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,3,12,0.82) 0%, rgba(0,8,28,0.65) 40%, rgba(0,3,12,0.88) 100%),
+        url('https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=1280&h=720&fit=crop&q=85') center / cover no-repeat;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border: 1px solid rgba(201,168,76,0.5);
+      border-radius: 40px;
+      color: var(--color-accent);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+      text-wrap: balance;
+    }
+
+    .hero-title span {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.6s forwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 40px;
+      background: var(--gradient-gold);
+      color: #000e3d;
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 8px 40px rgba(201,168,76,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.8s forwards;
+    }
+    .hero-cta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 60px rgba(201,168,76,0.5);
+    }
+
+    .hero-visual {
+      flex-shrink: 0;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1s forwards;
+      background: rgba(0,8,24,0.55);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 28px 0;
+    }
+
+    .hero-stat {
+      text-align: center;
+      color: rgba(255,255,255,0.85);
+      padding: 0 64px;
+    }
+    .hero-stat-num {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--color-accent);
+      display: block;
+      font-variant-numeric: tabular-nums;
+    }
+    .hero-stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 4px;
+    }
+    .hero-stat-divider {
+      width: 1px;
+      align-self: stretch;
+      background: rgba(255,255,255,0.15);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =====================
+       SECTION COMMON
+    ===================== */
+    .section-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+
+    .section-sub {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--color-text-light);
+      max-width: 600px;
+    }
+
+    .title-line::after {
+      content: '';
+      display: block;
+      width: 64px;
+      height: 4px;
+      background: var(--gradient-gold);
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    .highlight {
+      background: linear-gradient(transparent 55%, rgba(201,168,76,0.35) 55%);
+      display: inline;
+    }
+
+    /* =====================
+       SECTION 2: 課題提起
+    ===================== */
+    #problem {
+      padding: 120px 0;
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-number {
+      position: absolute;
+      top: -20px;
+      left: 80px;
+      font-size: 160px;
+      font-weight: 900;
+      opacity: 0.03;
+      line-height: 1;
+      pointer-events: none;
+      font-family: var(--font-serif);
+      color: var(--color-primary);
+    }
+
+    .problem-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .problem-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px 28px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,14,61,0.06);
+      border-left: 4px solid var(--color-accent);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .problem-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,14,61,0.1);
+    }
+
+    .problem-item-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.06));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .problem-item-text {
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    /* =====================
+       SECTION 3: 不動産投資の理由
+    ===================== */
+    #why-realestate {
+      padding: 120px 0;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-deco {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+
+    .why-card {
+      padding: 40px 32px;
+      border-radius: 20px;
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,14,61,0.1);
+    }
+
+    .why-card-num {
+      font-family: var(--font-serif);
+      font-size: 64px;
+      font-weight: 800;
+      color: rgba(201,168,76,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .why-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .why-card-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+    }
+
+    .why-card-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text-light);
+    }
+
+    /* =====================
+       SECTION 4: 立地が決める
+    ===================== */
+    #location {
+      padding: 120px 0;
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-deco-1 {
+      position: absolute;
+      width: 500px; height: 500px;
+      top: -100px; right: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .location-deco-2 {
+      position: absolute;
+      width: 300px; height: 300px;
+      bottom: -100px; left: -80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,14,61,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .location-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .location .section-title {
+      color: var(--color-primary);
+    }
+    .location .section-sub {
+      color: var(--color-text-light);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .comparison-table th {
+      padding: 16px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .comparison-table th:first-child {
+      background: #f1f3f8;
+      color: var(--color-text-light);
+    }
+    .comparison-table th:nth-child(2) {
+      background: #e8eaf0;
+      color: var(--color-text-light);
+    }
+    .comparison-table th:nth-child(3) {
+      background: var(--gradient-gold);
+      color: var(--color-primary);
+    }
+
+    .comparison-table td {
+      padding: 18px 24px;
+      font-size: 15px;
+      text-align: center;
+      border-top: 1px solid #eaecf2;
+    }
+    .comparison-table td:first-child {
+      background: #f8f9fc;
+      color: var(--color-text);
+      font-weight: 500;
+      text-align: left;
+    }
+    .comparison-table td:nth-child(2) {
+      background: #f4f5f9;
+      color: #9098b0;
+    }
+    .comparison-table td:nth-child(3) {
+      background: #fffbf0;
+      color: var(--color-accent-dark);
+      font-weight: 700;
+    }
+
+    .check-icon { color: var(--color-accent-dark); }
+    .cross-icon { color: #c0c4d0; }
+
+    /* =====================
+       SECTION 5: 4物件
+    ===================== */
+    #properties {
+      padding: 120px 0;
+      background: #0d1117;
+    }
+
+    .properties-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .properties-header .section-title { color: #ffffff; }
+    .properties-header .section-sub { color: rgba(255,255,255,0.55); margin: 16px auto 0; }
+    .properties-header .title-line::after { margin: 20px auto 0; }
+
+    /* メイン物件グリッド（2×2 外観） */
+    .prop-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .prop-main-cell {
+      position: relative;
+      height: 360px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .prop-main-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .prop-main-cell:hover img { transform: scale(1.04); }
+
+    /* 写真がない場合のプレースホルダー */
+    .prop-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
+    }
+    .prop-placeholder-a { background: linear-gradient(145deg, #1c2a4a, #0a1020); }
+    .prop-placeholder-b { background: linear-gradient(145deg, #1a1a1a, #2a1a0a); }
+    .prop-placeholder-c { background: linear-gradient(145deg, #0a1a2a, #1a0a2a); }
+    .prop-placeholder-d { background: linear-gradient(145deg, #1a2a1a, #2a2a0a); }
+
+    .prop-area-name {
+      position: absolute;
+      top: 20px; left: 24px;
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+      pointer-events: none;
+    }
+
+    .prop-yield-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      padding: 8px 16px;
+      background: var(--gradient-gold);
+      color: #000e3d;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 4px;
+    }
+
+    /* 物件情報バー（各写真の下に直付け） */
+    .prop-info-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,5,18,0.92) 0%, rgba(0,5,18,0.5) 60%, transparent 100%);
+      padding: 48px 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .prop-info-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .prop-info-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* 内観写真グリッド（4枚横並び） */
+    .prop-interior-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+
+    .prop-interior-cell {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .prop-interior-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .prop-interior-cell:hover img { transform: scale(1.06); }
+
+    .prop-interior-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;
+    }
+    .prop-int-ph-1 { background: linear-gradient(145deg, #1a1a2a, #0d0d1a); }
+    .prop-int-ph-2 { background: linear-gradient(145deg, #1a1218, #0d0a0e); }
+    .prop-int-ph-3 { background: linear-gradient(145deg, #0d1a1a, #0a0d14); }
+    .prop-int-ph-4 { background: linear-gradient(145deg, #1a1a14, #0d0d0a); }
+
+    .prop-interior-label {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+      background: rgba(0,0,0,0.5);
+      padding: 4px 10px;
+      border-radius: 3px;
+    }
+
+    /* 豪華内装セクション */
+    .interior-section {
+      margin-top: 4px;
+      background: #111111;
+      padding: 64px 80px 0;
+    }
+
+    .interior-header {
+      margin-bottom: 40px;
+    }
+
+    .interior-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .interior-title {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .interior-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    .interior-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4px;
+    }
+
+    .interior-cell {
+      position: relative;
+      overflow: hidden;
+    }
+    .interior-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .interior-cell:hover img { transform: scale(1.04); }
+
+    .interior-cell--large { height: 480px; }
+
+    .interior-cell-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      height: 480px;
+    }
+    .interior-cell-col .interior-cell {
+      flex: 1;
+      min-height: 0;
+    }
+    .interior-cell-col .interior-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .interior-tag {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      padding: 5px 12px;
+      border-radius: 4px;
+    }
+
+    /* CTAエリア */
+    .prop-cta-bar {
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    /* =====================
+       SECTION 6: 3つの強み
+    ===================== */
+    #strengths {
+      padding: 120px 0;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .strengths-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .strengths-header .section-sub {
+      margin: 0 auto;
+      margin-top: 16px;
+    }
+    .strengths-header .title-line::after {
+      margin: 20px auto 0;
+    }
+
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .strength-card {
+      padding: 48px 36px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid rgba(0,14,61,0.08);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .strength-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,14,61,0.1);
+      border-color: rgba(201,168,76,0.3);
+    }
+
+    .strength-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gradient-gold);
+    }
+
+    .strength-icon-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+
+    .strength-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .strength-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .strength-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text-light);
+    }
+
+    .strength-badge {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 8px 20px;
+      background: var(--gradient-gold);
+      color: var(--color-primary);
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 40px;
+    }
+
+    /* =====================
+       SECTION 7: フロー
+    ===================== */
+    #flow {
+      padding: 120px 0;
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-number {
+      position: absolute;
+      top: -20px;
+      left: 80px;
+      font-size: 160px;
+      font-weight: 900;
+      opacity: 0.03;
+      line-height: 1;
+      pointer-events: none;
+      font-family: var(--font-serif);
+      color: var(--color-primary);
+    }
+
+    .flow-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 48px;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 24px;
+      position: relative;
+    }
+
+    .flow-step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .flow-step-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .flow-step-line {
+      width: 2px;
+      flex: 1;
+      background: linear-gradient(to bottom, var(--color-accent), rgba(201,168,76,0.1));
+      margin: 4px 0;
+      min-height: 40px;
+    }
+
+    .flow-step:last-child .flow-step-line {
+      display: none;
+    }
+
+    .flow-step-content {
+      padding-bottom: 40px;
+    }
+
+    .flow-step-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+
+    .flow-step-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--color-text-light);
+    }
+
+    .flow-cta-wrap {
+      margin-top: 8px;
+    }
+
+    /* =====================
+       SECTION 8: FAQ + 最終CTA
+    ===================== */
+    #faq-cta {
+      padding: 120px 0 0;
+      background: white;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .faq-header .title-line::after {
+      margin: 20px auto 0;
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 120px;
+    }
+
+    .faq-item {
+      border-radius: 16px;
+      border: 1px solid rgba(0,14,61,0.08);
+      overflow: hidden;
+      transition: box-shadow 0.2s ease;
+    }
+    .faq-item:hover {
+      box-shadow: 0 4px 24px rgba(0,14,61,0.08);
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 28px;
+      cursor: default;
+    }
+
+    .faq-q-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .faq-q-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .faq-a {
+      padding: 0 28px 24px 76px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text-light);
+    }
+
+    /* Final CTA */
+    .final-cta-section {
+      background: var(--gradient-main);
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .final-cta-deco-1 {
+      position: absolute;
+      width: 600px; height: 600px;
+      top: -200px; left: -150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .final-cta-deco-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      bottom: -150px; right: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .final-cta-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.1);
+      pointer-events: none;
+    }
+    .final-cta-ring-1 { width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .final-cta-ring-2 { width: 750px; height: 750px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+    .final-cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .final-cta-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+    }
+
+    .final-cta-title {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 800;
+      color: white;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+
+    .final-cta-title span {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .final-cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .final-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 22px 56px;
+      background: var(--gradient-gold);
+      color: var(--color-primary);
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 8px 48px rgba(201,168,76,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .final-cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 64px rgba(201,168,76,0.55);
+    }
+
+    .final-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: #00071f;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.7;
+    }
+
+    /* =====================
+       SCROLL ANIMATION
+    ===================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero">
+
+    <!-- CSS夜景SVG（写真なしでも都市感を演出） -->
+    <svg id="hero-cityscape" aria-hidden="true" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#000208"/>
+          <stop offset="55%" stop-color="#030c20"/>
+          <stop offset="100%" stop-color="#091428"/>
+        </linearGradient>
+        <radialGradient id="hg" cx="50%" cy="100%" r="65%">
+          <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.18"/>
+          <stop offset="45%" stop-color="#c9a84c" stop-opacity="0.07"/>
+          <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="lg" cx="25%" cy="75%" r="40%">
+          <stop offset="0%" stop-color="#0030a0" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#0030a0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="rg" cx="78%" cy="70%" r="38%">
+          <stop offset="0%" stop-color="#001880" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#001880" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#000208" stop-opacity="0.0"/>
+          <stop offset="70%" stop-color="#000208" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#000208" stop-opacity="0.85"/>
+        </linearGradient>
+        <filter id="gblur"><feGaussianBlur stdDeviation="2.5"/></filter>
+        <filter id="sblur"><feGaussianBlur stdDeviation="1"/></filter>
+      </defs>
+
+      <!-- Sky -->
+      <rect width="1280" height="720" fill="url(#sg)"/>
+      <rect width="1280" height="720" fill="url(#hg)"/>
+      <rect width="1280" height="720" fill="url(#lg)"/>
+      <rect width="1280" height="720" fill="url(#rg)"/>
+
+      <!-- Stars -->
+      <circle cx="95" cy="45" r="0.9" fill="white" opacity="0.45"/>
+      <circle cx="220" cy="28" r="0.7" fill="white" opacity="0.3"/>
+      <circle cx="370" cy="62" r="1" fill="white" opacity="0.4"/>
+      <circle cx="510" cy="38" r="0.7" fill="white" opacity="0.35"/>
+      <circle cx="660" cy="22" r="0.9" fill="white" opacity="0.3"/>
+      <circle cx="780" cy="55" r="0.8" fill="white" opacity="0.38"/>
+      <circle cx="920" cy="32" r="0.7" fill="white" opacity="0.3"/>
+      <circle cx="1050" cy="48" r="1" fill="white" opacity="0.42"/>
+      <circle cx="1190" cy="35" r="0.8" fill="white" opacity="0.35"/>
+      <circle cx="155" cy="80" r="0.6" fill="white" opacity="0.25"/>
+      <circle cx="440" cy="90" r="0.6" fill="white" opacity="0.28"/>
+      <circle cx="840" cy="18" r="0.7" fill="white" opacity="0.3"/>
+
+      <!-- BG buildings (faded blue-gray) -->
+      <g opacity="0.45" filter="url(#gblur)">
+        <rect x="0"    y="390" width="160" height="330" fill="#0c1830"/>
+        <rect x="50"   y="340" width="70"  height="380" fill="#0e1c38"/>
+        <rect x="190"  y="410" width="110" height="310" fill="#0c1830"/>
+        <rect x="440"  y="310" width="55"  height="410" fill="#0e1c38"/>
+        <rect x="500"  y="260" width="35"  height="460" fill="#10203e"/>
+        <rect x="512"  y="200" width="10"  height="60"  fill="#10203e"/>
+        <rect x="515"  y="160" width="4"   height="50"  fill="#10203e"/>
+        <rect x="560"  y="290" width="80"  height="430" fill="#0c1830"/>
+        <rect x="640"  y="250" width="95"  height="470" fill="#0e1c38"/>
+        <rect x="750"  y="300" width="55"  height="420" fill="#0c1830"/>
+        <rect x="870"  y="350" width="100" height="370" fill="#0e1c38"/>
+        <rect x="970"  y="280" width="75"  height="440" fill="#10203e"/>
+        <rect x="1060" y="320" width="110" height="400" fill="#0c1830"/>
+        <rect x="1180" y="380" width="100" height="340" fill="#0e1c38"/>
+      </g>
+
+      <!-- MID buildings -->
+      <g opacity="0.85">
+        <rect x="-10"  y="440" width="130" height="280" fill="#060d1e"/>
+        <rect x="90"   y="400" width="85"  height="320" fill="#050c1c"/>
+        <rect x="160"  y="460" width="100" height="260" fill="#060d20"/>
+        <rect x="260"  y="350" width="90"  height="370" fill="#060e22"/>
+        <rect x="330"  y="290" width="75"  height="430" fill="#07101e"/>
+        <rect x="390"  y="370" width="65"  height="350" fill="#060d1e"/>
+        <rect x="480"  y="330" width="90"  height="390" fill="#06101e"/>
+        <rect x="560"  y="270" width="115" height="450" fill="#060e22"/>
+        <rect x="660"  y="310" width="75"  height="410" fill="#07101e"/>
+        <rect x="720"  y="360" width="100" height="360" fill="#060d1e"/>
+        <rect x="810"  y="300" width="80"  height="420" fill="#060e22"/>
+        <rect x="880"  y="380" width="65"  height="340" fill="#06101e"/>
+        <rect x="940"  y="340" width="95"  height="380" fill="#060d1e"/>
+        <rect x="1020" y="390" width="75"  height="330" fill="#060e22"/>
+        <rect x="1080" y="330" width="85"  height="390" fill="#07101e"/>
+        <rect x="1160" y="420" width="120" height="300" fill="#060d1e"/>
+      </g>
+
+      <!-- Window glow layers (blurred) -->
+      <g filter="url(#sblur)" opacity="0.22">
+        <rect x="335" y="300" width="65" height="400" fill="#f5d870"/>
+        <rect x="565" y="280" width="100" height="430" fill="#f5d870"/>
+        <rect x="815" y="310" width="70" height="400" fill="#f5d870"/>
+        <rect x="1085" y="340" width="75" height="370" fill="#f5d870"/>
+      </g>
+
+      <!-- Individual windows (crisp) -->
+      <g fill="#f5e090">
+        <!-- Building ~330 -->
+        <rect x="338" y="302" width="5" height="8" opacity="0.85"/>
+        <rect x="348" y="302" width="5" height="8" opacity="0.60"/>
+        <rect x="358" y="316" width="5" height="8" opacity="0.90"/>
+        <rect x="338" y="330" width="5" height="8" opacity="0.55"/>
+        <rect x="358" y="344" width="5" height="8" opacity="0.80"/>
+        <rect x="348" y="358" width="5" height="8" opacity="0.65"/>
+        <rect x="338" y="372" width="5" height="8" opacity="0.70"/>
+        <rect x="358" y="386" width="5" height="8" opacity="0.50"/>
+        <rect x="348" y="400" width="5" height="8" opacity="0.75"/>
+        <rect x="338" y="414" width="5" height="8" opacity="0.55"/>
+        <!-- Building ~565 -->
+        <rect x="570" y="280" width="5" height="8" opacity="0.80"/>
+        <rect x="582" y="294" width="5" height="8" opacity="0.65"/>
+        <rect x="594" y="280" width="5" height="8" opacity="0.90"/>
+        <rect x="606" y="308" width="5" height="8" opacity="0.55"/>
+        <rect x="570" y="322" width="5" height="8" opacity="0.75"/>
+        <rect x="594" y="336" width="5" height="8" opacity="0.85"/>
+        <rect x="582" y="350" width="5" height="8" opacity="0.60"/>
+        <rect x="606" y="364" width="5" height="8" opacity="0.70"/>
+        <rect x="570" y="378" width="5" height="8" opacity="0.50"/>
+        <rect x="594" y="392" width="5" height="8" opacity="0.80"/>
+        <rect x="582" y="406" width="5" height="8" opacity="0.65"/>
+        <rect x="606" y="420" width="5" height="8" opacity="0.45"/>
+        <!-- Building ~815 -->
+        <rect x="818" y="312" width="5" height="8" opacity="0.82"/>
+        <rect x="830" y="326" width="5" height="8" opacity="0.58"/>
+        <rect x="842" y="312" width="5" height="8" opacity="0.75"/>
+        <rect x="818" y="340" width="5" height="8" opacity="0.90"/>
+        <rect x="842" y="354" width="5" height="8" opacity="0.55"/>
+        <rect x="830" y="368" width="5" height="8" opacity="0.70"/>
+        <rect x="818" y="382" width="5" height="8" opacity="0.48"/>
+        <rect x="842" y="396" width="5" height="8" opacity="0.78"/>
+        <!-- Building ~1085 -->
+        <rect x="1090" y="342" width="5" height="8" opacity="0.78"/>
+        <rect x="1102" y="356" width="5" height="8" opacity="0.62"/>
+        <rect x="1114" y="342" width="5" height="8" opacity="0.88"/>
+        <rect x="1090" y="370" width="5" height="8" opacity="0.50"/>
+        <rect x="1114" y="384" width="5" height="8" opacity="0.72"/>
+        <rect x="1102" y="398" width="5" height="8" opacity="0.58"/>
+        <!-- Scattered extras -->
+        <rect x="270" y="360" width="5" height="8" opacity="0.60"/>
+        <rect x="490" y="340" width="5" height="8" opacity="0.55"/>
+        <rect x="668" y="320" width="5" height="8" opacity="0.68"/>
+        <rect x="950" y="350" width="5" height="8" opacity="0.62"/>
+        <rect x="1170" y="430" width="5" height="8" opacity="0.50"/>
+      </g>
+
+      <!-- Foreground silhouette (darkest) -->
+      <g fill="#010407">
+        <rect x="-10"  y="530" width="180" height="200"/>
+        <rect x="30"   y="500" width="90"  height="230"/>
+        <rect x="180"  y="550" width="160" height="180"/>
+        <rect x="220"  y="515" width="80"  height="215"/>
+        <rect x="360"  y="540" width="170" height="190"/>
+        <rect x="400"  y="505" width="85"  height="225"/>
+        <rect x="530"  y="555" width="150" height="175"/>
+        <rect x="570"  y="520" width="80"  height="210"/>
+        <rect x="690"  y="535" width="165" height="195"/>
+        <rect x="730"  y="500" width="80"  height="230"/>
+        <rect x="860"  y="545" width="155" height="185"/>
+        <rect x="900"  y="510" width="80"  height="220"/>
+        <rect x="1040" y="535" width="160" height="195"/>
+        <rect x="1080" y="500" width="80"  height="230"/>
+        <rect x="1210" y="545" width="80"  height="185"/>
+      </g>
+
+      <!-- Ground -->
+      <rect x="0" y="690" width="1280" height="30" fill="#010305"/>
+
+      <!-- Bottom fog overlay -->
+      <rect width="1280" height="720" fill="url(#fog)"/>
+    </svg>
+
+    <!-- 写真オーバーレイ（photos/hero-bg.jpg を置くと自動適用） -->
+    <div id="hero-photo-overlay"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-label">
+            <ph-icon name="map-pin" weight="duotone" size="16" style="color:var(--color-accent)"></ph-icon>
+            都心一等地専門のマンション投資
+          </div>
+          <h1 class="hero-title">
+            都心だけが、<br><span>資産になる。</span>
+          </h1>
+          <p class="hero-sub">
+            山手線内側の厳選物件のみ。<br>
+            資産価値が下がりにくく、空室になりにくい。<br>
+            老後の不安を、不動産で解消する。
+          </p>
+          <a href="#" class="hero-cta">
+            今すぐ無料相談を申し込む
+            <ph-icon name="arrow-right" weight="bold" size="20"></ph-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 統計バー -->
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">99<small style="font-size:22px;">%</small></span>
+        <div class="hero-stat-label">入居率</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100<small style="font-size:22px;">%</small></span>
+        <div class="hero-stat-label">都心一等地</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">0<small style="font-size:22px;">円</small></span>
+        <div class="hero-stat-label">相談料</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 2: 課題提起 ===================== -->
+  <section id="problem">
+    <div class="problem-number">01</div>
+    <div class="container">
+      <div class="problem-inner">
+        <div class="fade-up">
+          <span class="section-tag">Problem</span>
+          <h2 class="section-title title-line">
+            年金だけでは<br><span class="highlight">2,000万円</span>不足する
+          </h2>
+          <p class="section-sub">多くのサラリーマンが感じている老後の不安。あなたも同じ悩みを抱えていませんか？</p>
+          <ul class="problem-list">
+            <li class="problem-item">
+              <div class="problem-item-icon">
+                <ph-icon name="warning" weight="duotone" size="24" style="color:var(--color-accent)"></ph-icon>
+              </div>
+              <span class="problem-item-text">年金だけで生活できるか分からない</span>
+            </li>
+            <li class="problem-item">
+              <div class="problem-item-icon">
+                <ph-icon name="piggy-bank" weight="duotone" size="24" style="color:var(--color-accent)"></ph-icon>
+              </div>
+              <span class="problem-item-text">貯金を増やしたいが何から始めればいいか分からない</span>
+            </li>
+            <li class="problem-item">
+              <div class="problem-item-icon">
+                <ph-icon name="trend-down" weight="duotone" size="24" style="color:var(--color-accent)"></ph-icon>
+              </div>
+              <span class="problem-item-text">投資に挑戦したいが、失敗が怖い</span>
+            </li>
+          </ul>
+        </div>
+        <div class="fade-up" style="transition-delay:0.15s;">
+          <img src="https://cdn.jsdelivr.net/npm/undraw-svg@1.0.0/svgs/thought-process.svg"
+               width="460" height="360" alt="悩みのイメージ" loading="lazy"
+               style="max-width:100%;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 3: なぜ不動産投資か ===================== -->
+  <section id="why-realestate">
+    <div class="why-deco"></div>
+    <div class="container">
+      <div class="fade-up" style="text-align:center;">
+        <span class="section-tag">Why Real Estate</span>
+        <h2 class="section-title title-line" style="text-align:center;">
+          なぜ不動産投資が<span class="highlight">老後の柱</span>になるのか
+        </h2>
+        <p class="section-sub" style="margin:16px auto 0;">株や投資信託と違う、不動産ならではの3つのメリット。</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-up" style="transition-delay:0.1s;">
+          <div class="why-card-num">01</div>
+          <div class="why-card-icon">
+            <ph-icon name="currency-jpy" weight="duotone" size="28" style="color:#000e3d"></ph-icon>
+          </div>
+          <h3 class="why-card-title">毎月安定した<br>家賃収入が入る</h3>
+          <p class="why-card-text">働かなくても月々の収入が入り続ける。年金に上乗せできる安心感は他の投資では得られません。</p>
+        </div>
+        <div class="why-card fade-up" style="transition-delay:0.2s;">
+          <div class="why-card-num">02</div>
+          <div class="why-card-icon">
+            <ph-icon name="house" weight="duotone" size="28" style="color:#000e3d"></ph-icon>
+          </div>
+          <h3 class="why-card-title">資産として<br>子に残せる</h3>
+          <p class="why-card-text">現金や株と違い、実物資産は相続で子に残せます。自分の老後対策と同時に資産形成も実現。</p>
+        </div>
+        <div class="why-card fade-up" style="transition-delay:0.3s;">
+          <div class="why-card-num">03</div>
+          <div class="why-card-icon">
+            <ph-icon name="shield-check" weight="duotone" size="28" style="color:#000e3d"></ph-icon>
+          </div>
+          <h3 class="why-card-title">インフレに強い<br>実物資産</h3>
+          <p class="why-card-text">物価が上がれば家賃も上がります。現金の価値が下がる時代に、実物資産は強力な防衛手段。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 4: 立地が決める ===================== -->
+  <section id="location" style="padding:120px 0; position:relative; overflow:hidden;">
+    <div class="location-deco-1"></div>
+    <div class="location-deco-2"></div>
+    <div class="container">
+      <div class="location-inner">
+        <div class="fade-up">
+          <span class="section-tag" style="color:var(--color-accent);">Location</span>
+          <h2 class="section-title title-line">
+            立地が<span class="highlight">すべて</span>を決める
+          </h2>
+          <p style="font-size:18px; line-height:1.8; color:var(--color-text-light); max-width:500px; margin-top:16px;">
+            「安いから」と郊外物件を選んで失敗した事例は後を絶ちません。私たちは都心一等地のみに絞ることで、お客様の資産を守ります。
+          </p>
+        </div>
+        <div class="fade-up" style="transition-delay:0.15s;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th style="text-align:left;">比較項目</th>
+                <th>郊外物件</th>
+                <th>当社の都心物件</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>資産価値の推移</td>
+                <td><span class="cross-icon">年々下落</span></td>
+                <td><span class="check-icon">下がりにくい</span></td>
+              </tr>
+              <tr>
+                <td>空室リスク</td>
+                <td><span class="cross-icon">高い</span></td>
+                <td><span class="check-icon">極めて低い</span></td>
+              </tr>
+              <tr>
+                <td>売却のしやすさ</td>
+                <td><span class="cross-icon">買い手がつかない</span></td>
+                <td><span class="check-icon">買い手がつきやすい</span></td>
+              </tr>
+              <tr>
+                <td>家賃の安定性</td>
+                <td><span class="cross-icon">下落しやすい</span></td>
+                <td><span class="check-icon">安定している</span></td>
+              </tr>
+              <tr>
+                <td>入居者の質</td>
+                <td><span class="cross-icon">不安定</span></td>
+                <td><span class="check-icon">安定・高品質</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 5: 4物件 ===================== -->
+  <section id="properties">
+    <div class="container">
+      <div class="properties-header fade-up">
+        <span class="section-tag">Properties</span>
+        <h2 class="section-title title-line">
+          今すぐ購入可能な<span style="background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">都心4物件</span>
+        </h2>
+        <p class="section-sub">
+          いずれも山手線内側・駅徒歩5分以内。資産価値を維持し続ける厳選物件です。
+        </p>
+      </div>
+    </div>
+
+    <!-- 外観メイン写真グリッド（2×2） -->
+    <div class="prop-main-grid fade-up">
+
+      <!-- 物件A: 港区・赤坂 -->
+      <div class="prop-main-cell">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=640&h=400&fit=crop&q=80" alt="港区・赤坂 外観" loading="eager">
+        <div class="prop-area-name">赤坂</div>
+        <span class="prop-yield-badge">利回り 4.2%</span>
+        <div class="prop-info-bar">
+          <span class="prop-info-name">グランドアーク赤坂</span>
+          <span class="prop-info-detail">港区赤坂｜徒歩3分｜1LDK / 42㎡</span>
+        </div>
+      </div>
+
+      <!-- 物件B: 渋谷区・恵比寿 -->
+      <div class="prop-main-cell">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=640&h=400&fit=crop&q=80" alt="渋谷区・恵比寿 外観" loading="eager">
+        <div class="prop-area-name">恵比寿</div>
+        <span class="prop-yield-badge">利回り 4.0%</span>
+        <div class="prop-info-bar">
+          <span class="prop-info-name">レジデンス恵比寿</span>
+          <span class="prop-info-detail">渋谷区恵比寿｜徒歩5分｜1K / 28㎡</span>
+        </div>
+      </div>
+
+      <!-- 物件C: 新宿区・四谷 -->
+      <div class="prop-main-cell">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=640&h=400&fit=crop&q=80" alt="新宿区・四谷 外観" loading="eager">
+        <div class="prop-area-name">四谷</div>
+        <span class="prop-yield-badge">利回り 4.5%</span>
+        <div class="prop-info-bar">
+          <span class="prop-info-name">プレミアム四谷タワー</span>
+          <span class="prop-info-detail">新宿区四谷｜徒歩2分｜1LDK / 38㎡</span>
+        </div>
+      </div>
+
+      <!-- 物件D: 千代田区・神保町 -->
+      <div class="prop-main-cell">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?w=640&h=400&fit=crop&q=80" alt="千代田区・神保町 外観" loading="eager">
+        <div class="prop-area-name">神保町</div>
+        <span class="prop-yield-badge">利回り 3.8%</span>
+        <div class="prop-info-bar">
+          <span class="prop-info-name">アーバンコート神保町</span>
+          <span class="prop-info-detail">千代田区神保町｜徒歩4分｜1K / 25㎡</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 豪華内装 -->
+    <div class="interior-section fade-up">
+      <div class="interior-header">
+        <span class="interior-label">Interior</span>
+        <h3 class="interior-title">ハイグレードな豪華内装</h3>
+        <p class="interior-sub">コンシェルジュ・24時間セキュリティ・宅配ボックスを標準装備。上質な暮らしが入居者を惹きつけます。</p>
+      </div>
+      <div class="interior-grid">
+        <div class="interior-cell interior-cell--large">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=760&h=480&fit=crop&q=80" alt="リビング・ダイニング" loading="lazy">
+          <span class="interior-tag">リビング・ダイニング</span>
+        </div>
+        <div class="interior-cell-col">
+          <div class="interior-cell">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=380&h=236&fit=crop&q=80" alt="システムキッチン" loading="lazy">
+            <span class="interior-tag">システムキッチン</span>
+          </div>
+          <div class="interior-cell">
+            <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=380&h=236&fit=crop&q=80" alt="バスルーム" loading="lazy">
+            <span class="interior-tag">バスルーム</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mid CTA -->
+    <div class="prop-cta-bar fade-up">
+      <a href="#" class="hero-cta" style="display:inline-flex;">
+        すべての物件を無料相談する
+        <ph-icon name="arrow-right" weight="bold" size="20"></ph-icon>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 6: 3つの強み ===================== -->
+  <section id="strengths">
+    <div class="container">
+      <div class="strengths-header fade-up">
+        <span class="section-tag">Our Strengths</span>
+        <h2 class="section-title title-line">
+          私たちが<span class="highlight">選ばれる3つ</span>の理由
+        </h2>
+        <p class="section-sub">都心一等地専門だからこそ実現できる、3つの圧倒的な強み。</p>
+      </div>
+      <div class="strengths-grid">
+        <div class="strength-card fade-up" style="transition-delay:0.1s;">
+          <div class="strength-icon-wrap">
+            <ph-icon name="chart-line-up" weight="duotone" size="40" style="color:var(--color-accent)"></ph-icon>
+          </div>
+          <div class="strength-num">STRENGTH 01</div>
+          <h3 class="strength-title">資産価値が<br>落ちない</h3>
+          <p class="strength-text">山手線内側の一等地のみを厳選仕入れ。希少性が高く、10年後・20年後も価値が下がりにくい物件だけをご提供します。</p>
+          <span class="strength-badge">都心一等地のみ</span>
+        </div>
+        <div class="strength-card fade-up" style="transition-delay:0.2s;">
+          <div class="strength-icon-wrap">
+            <ph-icon name="users" weight="duotone" size="40" style="color:var(--color-accent)"></ph-icon>
+          </div>
+          <div class="strength-num">STRENGTH 02</div>
+          <h3 class="strength-title">空室に<br>なりにくい</h3>
+          <p class="strength-text">交通利便性の高い都心エリアは入居希望者が絶えません。入居率99%超を誇り、家賃収入が途絶えるリスクを最小化します。</p>
+          <span class="strength-badge">入居率99%超</span>
+        </div>
+        <div class="strength-card fade-up" style="transition-delay:0.3s;">
+          <div class="strength-icon-wrap">
+            <ph-icon name="star" weight="duotone" size="40" style="color:var(--color-accent)"></ph-icon>
+          </div>
+          <div class="strength-num">STRENGTH 03</div>
+          <h3 class="strength-title">豪華設備で<br>入居者に選ばれる</h3>
+          <p class="strength-text">コンシェルジュサービス・24時間セキュリティ・宅配ボックスを標準装備。入居者満足度が高く、長期入居につながります。</p>
+          <span class="strength-badge">ハイグレード設備</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 7: フロー ===================== -->
+  <section id="flow">
+    <div class="flow-number">07</div>
+    <div class="container">
+      <div class="flow-inner">
+        <div class="fade-up">
+          <span class="section-tag">Flow</span>
+          <h2 class="section-title title-line">
+            <span class="highlight">3ステップ</span>で始める無理のないマンション投資
+          </h2>
+          <p class="section-sub" style="margin-top:16px;">
+            難しい手続きはすべて専任アドバイザーがサポート。<br>
+            はじめての方でも安心してスタートできます。
+          </p>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <div class="flow-step-left">
+                <div class="flow-step-dot">1</div>
+                <div class="flow-step-line"></div>
+              </div>
+              <div class="flow-step-content">
+                <h3 class="flow-step-title">無料相談を申し込む</h3>
+                <p class="flow-step-text">フォームへの入力は3分で完了。希望日時をお選びください。</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-left">
+                <div class="flow-step-dot">2</div>
+                <div class="flow-step-line"></div>
+              </div>
+              <div class="flow-step-content">
+                <h3 class="flow-step-title">専任アドバイザーとオンライン面談</h3>
+                <p class="flow-step-text">あなたの収入・資産状況をヒアリングし、最適なプランをご提案。しつこい営業は一切しません。</p>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-left">
+                <div class="flow-step-dot">3</div>
+              </div>
+              <div class="flow-step-content">
+                <h3 class="flow-step-title">あなたに合った物件をご提案</h3>
+                <p class="flow-step-text">予算・目標に合わせた物件を複数ご紹介。納得いくまで比較・検討できます。</p>
+              </div>
+            </div>
+          </div>
+          <div class="flow-cta-wrap" style="margin-top: 8px;">
+            <a href="#" class="hero-cta" style="display:inline-flex;">
+              無料相談を申し込む
+              <ph-icon name="arrow-right" weight="bold" size="20"></ph-icon>
+            </a>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay:0.2s;">
+          <img src="https://cdn.jsdelivr.net/npm/undraw-svg@1.0.0/svgs/agreement.svg"
+               width="460" height="360" alt="相談のイメージ" loading="lazy"
+               style="max-width:100%;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 8: FAQ ===================== -->
+  <section id="faq-cta">
+    <div class="container">
+      <div class="faq-header fade-up">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title title-line">よくあるご質問</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <div class="faq-q">
+            <div class="faq-q-mark">Q</div>
+            <div class="faq-q-text">自己資金はいくら必要ですか？</div>
+          </div>
+          <div class="faq-a">頭金ゼロからスタートできるプランもございます。年収・勤務先に応じてフルローン対応も可能です。まずは無料相談でご状況をお聞かせください。</div>
+        </div>
+        <div class="faq-item fade-up" style="transition-delay:0.1s;">
+          <div class="faq-q">
+            <div class="faq-q-mark">Q</div>
+            <div class="faq-q-text">副業禁止の会社員でも大丈夫ですか？</div>
+          </div>
+          <div class="faq-a">不動産投資は「資産運用」に分類され、多くの企業で副業規定の対象外です。ただし勤務先の規定をご確認いただくことをお勧めします。</div>
+        </div>
+        <div class="faq-item fade-up" style="transition-delay:0.2s;">
+          <div class="faq-q">
+            <div class="faq-q-mark">Q</div>
+            <div class="faq-q-text">相談は本当に無料ですか？</div>
+          </div>
+          <div class="faq-a">完全無料です。相談後にしつこい営業や追加費用は一切ございません。「話を聞くだけ」でも大歓迎です。</div>
+        </div>
+        <div class="faq-item fade-up" style="transition-delay:0.3s;">
+          <div class="faq-q">
+            <div class="faq-q-mark">Q</div>
+            <div class="faq-q-text">空室になった場合はどうなりますか？</div>
+          </div>
+          <div class="faq-a">都心一等地のため空室リスクは極めて低いですが、万が一の場合も賃貸管理サポートを通じて早期入居を実現します。入居率99%の実績がその証明です。</div>
+        </div>
+        <div class="faq-item fade-up" style="transition-delay:0.4s;">
+          <div class="faq-q">
+            <div class="faq-q-mark">Q</div>
+            <div class="faq-q-text">どのくらいの年収があれば購入できますか？</div>
+          </div>
+          <div class="faq-a">一般的に年収400万円以上から検討できるケースが多いです。ただし、勤務先・勤続年数・保有資産によっても異なりますので、詳しくは無料相談にてご確認ください。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="final-cta-section">
+      <div class="final-cta-deco-1"></div>
+      <div class="final-cta-deco-2"></div>
+      <div class="final-cta-ring final-cta-ring-1"></div>
+      <div class="final-cta-ring final-cta-ring-2"></div>
+      <div class="container">
+        <div class="final-cta-content fade-up">
+          <div class="final-cta-tag">FREE CONSULTATION</div>
+          <h2 class="final-cta-title">
+            老後の不安を、<br><span>今日から解消</span>しよう。
+          </h2>
+          <p class="final-cta-sub">
+            無料相談は毎日受付中。<br>
+            オンラインで完結するので、どこからでもご参加いただけます。
+          </p>
+          <a href="#" class="final-cta-btn">
+            今すぐ無料相談を申し込む
+            <ph-icon name="arrow-right" weight="bold" size="22"></ph-icon>
+          </a>
+          <p class="final-note">※ 完全無料・しつこい営業なし・いつでもキャンセル可</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="container">
+      <p class="footer-text">
+        © 2024 都心マンション投資 All Rights Reserved.<br>
+        ※ 本ページに掲載されている利回りは想定値であり、将来の収益を保証するものではありません。
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
